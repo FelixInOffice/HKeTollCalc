@@ -1,7 +1,7 @@
 <template>
   <div class="home__wrapper" :class="{ freeze: !permissionStatus }">
     <SpeedMeter :currentLocation="currentLocation" />
-    <tunnelBlock :tunnels="tunnel" :currentLocation="currentLocation" />
+    <!-- <tunnelBlock :tunnels="tunnel" :currentLocation="currentLocation" /> -->
   
     <div class="home__wrapper--permissionStatus" :class="[ permissionStatus ? 'status-dot-green' : 'status-dot-red' ]">
     </div>
@@ -19,7 +19,7 @@ import { onMounted, ref, reactive } from "vue";
 import tunnel from "@/pageData/tunnel";
 import Popup from "../common/Popup.vue";
 import Button from "../common/Button.vue";
-import tunnelBlock from "./tunnelBlock.vue";
+// import tunnelBlock from "./tunnelBlock.vue";
 import SpeedMeter from "../common/SpeedMeter.vue";
 
 const permissionStatus = ref(false);

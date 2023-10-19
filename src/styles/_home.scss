@@ -1,0 +1,30 @@
+.home__wrapper {
+  position: relative;
+  overflow: auto;
+  height: 100%;
+
+  &.freeze {
+    overflow: hidden;
+  }
+
+  &--permissionStatus {
+    position: fixed;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 101;
+
+    &.status-dot-green {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: green;
+    }
+
+    &.status-dot-red {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: red;
+    }
+  }
+}

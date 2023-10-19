@@ -1,0 +1,12 @@
+.tunnelBlock__wrapper {
+  display: flex;
+  flex-direction: column;
+
+  &--item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    height: 10rem;
+  }
+}

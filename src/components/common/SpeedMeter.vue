@@ -1,14 +1,16 @@
 <template>
-  <div class="speedMeter">
-    This is the speedMeter
-    <pre>
-      {{ currentLocation }}
-    </pre>
+  <div class="speedMeter__wrapper">
+    <div class="speedMeter__wrapper--speed">
+      {{ speedMeter }}
+    </div>
+    <div class="speedMeter__wrapper--unit">
+      km/h
+    </div>
   </div>
 </template>
 
 <script setup>
-import { watch, reactive } from "vue";
+import { ref, watch } from 'vue';
 const props = defineProps({
   currentLocation: {
     type: Object,
@@ -16,8 +18,17 @@ const props = defineProps({
   },
 });
 
-// watch(props.currentLocation, (newVal, oldVal) => {
-//   console.log("newVal", newVal);
-//   console.log("oldVal", oldVal);
-// });
+const speedMeter = ref(props.currentLocation.speed);
+
+if (speedMeter.value <= 0 || speedMeter.value === null) {
+  speedMeter.value = 0;
+}
+
+watch(props.currentLocation, (newValue, oldValue) => {
+  speedMeter.value = newValue.speed;
+
+  if (speedMeter.value <= 0 || speedMeter.value === null) {
+    speedMeter.value = 0;
+  }
+});
 </script>

@@ -13,30 +13,30 @@
 
 .popup__container {
   display: flex;
-  row-gap: 1rem;
+  row-gap: rem(16);
   flex-direction: column;
   justify-content: center;
   background-color: white;
-  padding: 1rem;
-  border-radius: 5px;
+  padding: rem(16);
+  border-radius: rem(5);
   width: 50%;
-  max-width: 500px;
+  max-width: rem(500);
 
   &--title {
-    font-size: 1rem;
+    font-size: rem(16);
     font-weight: 400;
   }
 
   &--content {
-    font-size: 1.2rem;
+    font-size: rem(19);
     font-weight: 300;
-    max-height: 100px;
+    max-height: rem(100);
     overflow: auto;
   }
 
   &--buttons {
     display: flex;
-    column-gap: 1rem;
+    column-gap: rem(16);
     justify-content: center;
     align-items: center;
   }

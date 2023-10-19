@@ -1,6 +1,5 @@
 <template>
   <div class="home__wrapper" :class="{ freeze: !permissionStatus }">
-    <SpeedMeter :currentLocation="currentLocation" />
     <TunnelCard :tunnels="tunnel" :currentLocation="currentLocation" />
   
     <div class="home__wrapper--permissionStatus" :class="[ permissionStatus ? 'status-dot-green' : 'status-dot-red' ]">
@@ -12,6 +11,7 @@
   
     <Popup v-if="!permissionStatus && !errorPopupControl" title="Getting your location.." content="loading..." />
   </div>
+  <SpeedMeter :currentLocation="currentLocation" />
 </template>
 
 <script setup>
@@ -52,7 +52,9 @@ function success(position) {
   const latitude = position.coords.latitude;
   const longitude = position.coords.longitude;
 
-  currentLocation.speed = speed;
+  console.log(position);
+
+  currentLocation.speed = Math.round(speed * 3.6);
   currentLocation.timestamp = timestamp;
   currentLocation.latitude = latitude;
   currentLocation.longitude = longitude;

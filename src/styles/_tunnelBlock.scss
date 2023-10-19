@@ -1,12 +1,16 @@
 .tunnelBlock__wrapper {
   display: flex;
   flex-direction: column;
+  row-gap: rem(15);
+  padding: rem(15);
 
   &--item {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 1rem;
-    height: 10rem;
+    padding: rem(16);
+    height: rem(160);
+    color: color(white);
+    background-color: color(secondaryDark);
   }
 }

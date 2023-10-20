@@ -1,3 +1,20 @@
 .record__wrapper {
   color: color(white);
+  display: flex;
+  row-gap: rem(15);
+  flex-direction: column;
+  overflow: auto;
+  height: 100%;
+}
+
+.recordArray__wrapper {
+  padding: var(--layout-padding);
+  display: flex;
+  flex-direction: column;
+  row-gap: rem(15);
+
+  &--record {
+    display: flex;
+    justify-content: space-between;
+  }
 }

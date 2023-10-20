@@ -1,6 +1,6 @@
 <template>
   <div class="tunnelBlock__wrapper">
-    <div v-for="tunnel in sortedTunnels" class="tunnelBlock__wrapper--item">
+    <div v-for="tunnel in sortedTunnels" class="tunnelBlock__wrapper--item" @click="addToRecord(tunnel)">
       <div class="tunnelBlock__wrapper--item--name">
         {{ tunnel.name }}
       </div>
@@ -69,5 +69,9 @@ function formatDistance(distance) {
 
 function formatFee(fee) {
   return "HKD " + fee;
+}
+
+function addToRecord(tunnel) {
+  console.log("add to record:", tunnel);
 }
 </script>

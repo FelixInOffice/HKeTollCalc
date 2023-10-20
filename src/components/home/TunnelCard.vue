@@ -1,6 +1,6 @@
 <template>
   <div class="tunnelBlock__wrapper">
-    <div v-for="tunnel in sortedTunnels" class="tunnelBlock__wrapper--item">
+    <div v-for="tunnel in sortedTunnels" class="tunnelBlock__wrapper--item" @click="addToRecord(tunnel)">
       <div class="tunnelBlock__wrapper--item--name">
         {{ tunnel.name }}
       </div>
@@ -16,6 +16,9 @@
 
 <script setup>
 import { computed } from "vue";
+import { useTunnelRecordStore } from '@/stores/tunnelRecord';
+
+const tunnelRecordStore = useTunnelRecordStore();
 
 const props = defineProps({
   tunnels: {
@@ -69,5 +72,9 @@ function formatDistance(distance) {
 
 function formatFee(fee) {
   return "HKD " + fee;
+}
+
+function addToRecord(tunnel) {
+  tunnelRecordStore.addRecord(tunnel);
 }
 </script>

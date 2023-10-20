@@ -16,6 +16,9 @@
 
 <script setup>
 import { computed } from "vue";
+import { useTunnelRecordStore } from '@/stores/tunnelRecord';
+
+const tunnelRecordStore = useTunnelRecordStore();
 
 const props = defineProps({
   tunnels: {
@@ -72,6 +75,6 @@ function formatFee(fee) {
 }
 
 function addToRecord(tunnel) {
-  console.log("add to record:", tunnel);
+  tunnelRecordStore.addRecord(tunnel);
 }
 </script>

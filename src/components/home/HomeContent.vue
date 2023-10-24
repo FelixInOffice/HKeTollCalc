@@ -52,8 +52,6 @@ function success(position) {
   const latitude = position.coords.latitude;
   const longitude = position.coords.longitude;
 
-  console.log(position);
-
   currentLocation.speed = Math.round(speed * 3.6);
   currentLocation.timestamp = timestamp;
   currentLocation.latitude = latitude;

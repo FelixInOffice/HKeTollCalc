@@ -75,6 +75,6 @@ function popupMessage(tunnel) {
   addRecordPopupStatus.value = true;
   setTimeout(() => {
     addRecordPopupStatus.value = false;
-  }, 2000);
+  }, 500);
 }
 </script>

@@ -83,6 +83,7 @@ function formatFee(fee) {
 }
 
 function addToRecord(tunnel) {
+  tunnel.time = new Date().toLocaleString();
   tunnelRecordStore.addRecord(tunnel);
   emit('addRecord', tunnel);
 }

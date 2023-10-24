@@ -1,15 +1,24 @@
 <template>
   <div class="recordArray__wrapper">
+    <div class="recordArray__wrapper--topBar">
+      Total: {{ tunnelFeeTotal }}
+    </div>
     <div
       class="recordArray__wrapper--record"
       v-for="(record, idx) in tunnelRecordArray"
       :key="idx"
     >
-      {{ record.name }}
-      {{ record.fee }}
+      <div class="recordArray__wrapper--record--info">
+        <div>
+          {{ record.name }}
+          HKD {{ record.fee }}
+        </div>
+        <div>
+          {{ record.time }}
+        </div>
+      </div>
       <button @click="deleteRecord(idx)">Delete</button>
     </div>
-    {{ tunnelFeeTotal }}
   </div>
 </template>
 

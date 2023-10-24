@@ -1,6 +1,6 @@
 <template>
-  <div class="home__wrapper" :class="{ freeze: !permissionStatus }">
-    <TunnelCard :tunnels="tunnel" :currentLocation="currentLocation" />
+  <div class="home__wrapper" :class="{ freeze: !permissionStatus || addRecordPopupStatus }">
+    <TunnelCard :tunnels="tunnel" :currentLocation="currentLocation" @add-record="popupMessage($event)" />
   
     <div class="home__wrapper--permissionStatus" :class="[ permissionStatus ? 'status-dot-green' : 'status-dot-red' ]">
     </div>
@@ -10,6 +10,8 @@
     </Popup>
   
     <Popup v-if="!permissionStatus && !errorPopupControl" title="Getting your location.." content="loading..." />
+
+    <Popup v-if="addRecordPopupStatus" title="Record added!" :content="currentClickedTunnel.name" />
   </div>
   <SpeedMeter :currentLocation="currentLocation" />
 </template>
@@ -32,6 +34,8 @@ const currentLocation = reactive({
   latitude: null,
   longitude: null,
 });
+const addRecordPopupStatus = ref(false);
+const currentClickedTunnel = ref(null);
 
 onMounted(() => {
   handleWatchPosition();
@@ -64,5 +68,13 @@ function error(err) {
 
   errorTitle.value = "Error: " + err.code;
   errorContent.value = err.message;
+}
+
+function popupMessage(tunnel) {
+  currentClickedTunnel.value = tunnel;
+  addRecordPopupStatus.value = true;
+  setTimeout(() => {
+    addRecordPopupStatus.value = false;
+  }, 500);
 }
 </script>

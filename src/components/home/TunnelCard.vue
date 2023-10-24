@@ -1,6 +1,10 @@
 <template>
   <div class="tunnelBlock__wrapper">
-    <div v-for="tunnel in sortedTunnels" class="tunnelBlock__wrapper--item" @click="addToRecord(tunnel)">
+    <div
+      v-for="tunnel in sortedTunnels"
+      class="tunnelBlock__wrapper--item"
+      @click="addToRecord(tunnel)"
+    >
       <div class="tunnelBlock__wrapper--item--name">
         {{ tunnel.name }}
       </div>
@@ -16,7 +20,9 @@
 
 <script setup>
 import { computed } from "vue";
-import { useTunnelRecordStore } from '@/stores/tunnelRecord';
+import { useTunnelRecordStore } from "@/stores/tunnelRecord";
+
+const emit = defineEmits(['addRecord'])
 
 const tunnelRecordStore = useTunnelRecordStore();
 
@@ -32,15 +38,17 @@ const props = defineProps({
 });
 
 const sortedTunnels = computed(() => {
-  return props.tunnels.content.map((tunnel) => {
-    const distance = getDistanceFromLatLonInKm(
-      props.currentLocation.latitude,
-      props.currentLocation.longitude,
-      tunnel.location.lat,
-      tunnel.location.lng
-    );
-    return { ...tunnel, distance };
-  }).sort((a, b) => a.distance - b.distance);
+  return props.tunnels.content
+    .map((tunnel) => {
+      const distance = getDistanceFromLatLonInKm(
+        props.currentLocation.latitude,
+        props.currentLocation.longitude,
+        tunnel.location.lat,
+        tunnel.location.lng
+      );
+      return { ...tunnel, distance };
+    })
+    .sort((a, b) => a.distance - b.distance);
 });
 
 function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
@@ -75,6 +83,8 @@ function formatFee(fee) {
 }
 
 function addToRecord(tunnel) {
+  tunnel.time = new Date().toLocaleString();
   tunnelRecordStore.addRecord(tunnel);
+  emit('addRecord', tunnel);
 }
 </script>

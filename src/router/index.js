@@ -5,7 +5,6 @@ import Record from '../views/RecordView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  mode: 'hash',
   routes: [
     {
       path: '/',

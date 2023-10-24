@@ -28,7 +28,6 @@ onMounted(() => {
 watch(
   tunnelRecordArray,
   (newVal) => {
-    console.log(newVal);
     const total = newVal.reduce((acc, curr) => {
       return acc + curr.fee;
     }, 0);

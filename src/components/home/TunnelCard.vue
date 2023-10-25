@@ -22,7 +22,7 @@
 import { computed } from "vue";
 import { useTunnelRecordStore } from "@/stores/tunnelRecord";
 
-const emit = defineEmits(['addRecord'])
+const emit = defineEmits(["addRecord"]);
 
 const tunnelRecordStore = useTunnelRecordStore();
 
@@ -85,6 +85,6 @@ function formatFee(fee) {
 function addToRecord(tunnel) {
   tunnel.time = new Date().toLocaleString();
   tunnelRecordStore.addRecord(tunnel);
-  emit('addRecord', tunnel);
+  emit("addRecord", tunnel);
 }
 </script>

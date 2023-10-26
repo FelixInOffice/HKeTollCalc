@@ -9,9 +9,9 @@
       <Button v-if="errorPopupControl" @click="errorPopupControl = !errorPopupControl">Close</Button>
     </Popup>
   
-    <Popup v-if="!permissionStatus && !errorPopupControl" title="Getting your location.." content="loading..." />
+    <Popup v-if="!permissionStatus && !errorPopupControl" title="載入中..." content="正在取得你的當前位置..." />
 
-    <Popup v-if="addRecordPopupStatus" title="Record added!" :content="currentClickedTunnel.name" />
+    <Popup v-if="addRecordPopupStatus" title="已添加至紀錄!" :content="currentClickedTunnel.name" />
   </div>
   <SpeedMeter v-if="settingStore.setting.showSpeedMeter" :currentLocation="currentLocation" />
 </template>
@@ -69,7 +69,7 @@ function error(err) {
   permissionStatus.value = false;
   errorPopupControl.value = true;
 
-  errorTitle.value = "Error: " + err.code;
+  errorTitle.value = "錯誤碼：" + err.code;
   errorContent.value = err.message;
 }
 

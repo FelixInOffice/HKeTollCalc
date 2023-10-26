@@ -2,7 +2,7 @@
   <div class="home__wrapper" :class="{ freeze: !permissionStatus || addRecordPopupStatus }">
     <TunnelCard :tunnels="tunnel" :currentLocation="currentLocation" @add-record="popupMessage($event)" />
   
-    <div class="home__wrapper--permissionStatus" :class="[ permissionStatus ? 'status-dot-green' : 'status-dot-red' ]">
+    <div v-if="settingStore.showGPSStatus" class="home__wrapper--permissionStatus" :class="[ permissionStatus ? 'status-dot-green' : 'status-dot-red' ]">
     </div>
   
     <Popup v-if="errorPopupControl" :title="errorTitle" :content="errorContent">
@@ -13,7 +13,7 @@
 
     <Popup v-if="addRecordPopupStatus" title="Record added!" :content="currentClickedTunnel.name" />
   </div>
-  <SpeedMeter :currentLocation="currentLocation" />
+  <SpeedMeter v-if="settingStore.showSpeedMeter" :currentLocation="currentLocation" />
 </template>
 
 <script setup>
@@ -23,6 +23,7 @@ import Popup from "../common/Popup.vue";
 import Button from "../common/Button.vue";
 import TunnelCard from "./TunnelCard.vue";
 import SpeedMeter from "../common/SpeedMeter.vue";
+import { useSettingStore } from "@/stores/setting";
 
 const permissionStatus = ref(false);
 const errorPopupControl = ref(false);
@@ -36,6 +37,8 @@ const currentLocation = reactive({
 });
 const addRecordPopupStatus = ref(false);
 const currentClickedTunnel = ref(null);
+
+const settingStore = useSettingStore();
 
 onMounted(() => {
   handleWatchPosition();

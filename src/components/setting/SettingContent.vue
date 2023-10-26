@@ -1,6 +1,7 @@
 <template>
-  <div style="color: white">Setting</div>
+  <ToggleSwitch :status="false" @toggleSwitch="" />
 </template>
 
 <script setup>
+import ToggleSwitch from "../common/ToggleSwitch.vue";
 </script>

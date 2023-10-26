@@ -1,23 +1,20 @@
-import { ref } from "vue";
+import { reactive } from "vue";
 import { defineStore } from "pinia";
+import settingData from "@/pageData/settingData";
 
 export const useSettingStore = defineStore("setting", () => {
-  const showSpeedMeter = ref(true);
-  const showGPSStatus = ref(true);
-  const localShowSpeedMeter = localStorage.getItem("showSpeedMeter");
-  const localShowGPSStatus = localStorage.getItem("showGPSStatus");
 
-  if (localShowSpeedMeter) {
-    showSpeedMeter.value = JSON.parse(localShowSpeedMeter);
-  } else {
-    localStorage.setItem("showSpeedMeter", showSpeedMeter.value);
-  }
+  const setting = reactive({});
 
-  if (localShowGPSStatus) {
-    showGPSStatus.value = JSON.parse(localShowGPSStatus);
-  } else {
-    localStorage.setItem("showGPSStatus", showGPSStatus.value);
-  }
+  settingData.content.forEach(function (settingItem) {
+    setting[settingItem.key] = settingItem.default;
 
-  return { showSpeedMeter, showGPSStatus };
+    if (localStorage.getItem(settingItem.key)) {
+      setting[settingItem.key] = JSON.parse(localStorage.getItem(settingItem.key));
+    } else {
+      localStorage.setItem(settingItem.key, setting[settingItem.key]);
+    }
+  });
+
+  return { setting };
 });

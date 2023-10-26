@@ -1,5 +1,4 @@
 .record__wrapper {
-  color: color(white);
   display: flex;
   row-gap: rem(15);
   flex-direction: column;
@@ -23,9 +22,19 @@
     left: 0;
     width: 100%;
     height: var(--topBar-height);
-    padding: 0 var(--layout-padding);
     background: linear-gradient(color(black), color(secondaryDark));
     box-shadow: inset rem(0) rem(3) rem(20) rem(0) color(mainDark);
+    color: color(white);
+
+    &--total {
+      position: absolute;
+      left: var(--layout-padding);
+    }
+
+    &--deleteAll {
+      position: absolute;
+      right: var(--layout-padding);
+    }
   }
 
   &--record {
@@ -40,6 +49,7 @@
     &--info {
       display: flex;
       flex-direction: column;
+      color: color(white);
     }
   }
 }

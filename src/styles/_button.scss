@@ -14,4 +14,9 @@
   vertical-align: middle;
   white-space: nowrap;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+
+  &.disabled {
+    -webkit-tap-highlight-color: transparent;
+    background-color: #848484;
+  }
 }

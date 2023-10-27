@@ -5,12 +5,7 @@
         合計：HKD {{ tunnelFeeTotal }}
       </div>
       <div class="recordArray__wrapper--topBar--deleteAll">
-        <button
-          :disabled="tunnelRecordArray.length === 0"
-          @click="confirmDeleteAllPopupControl = !confirmDeleteAllPopupControl"
-        >
-          刪除全部
-        </button>
+        <Button :disabled="tunnelRecordArray.length === 0" @click="confirmDeleteAllPopupControl = !confirmDeleteAllPopupControl">刪除全部</Button>
       </div>
     </div>
     <div
@@ -27,7 +22,7 @@
           {{ record.time }}
         </div>
       </div>
-      <button @click="deleteRecord(idx)">刪除</button>
+      <Button @click="deleteRecord(idx)">刪除</Button>
     </div>
 
     <Popup
@@ -35,12 +30,12 @@
       title="確定刪除全部？"
       content="此動作將會刪除所有紀錄，並無法復原。"
     >
-      <button @click="deleteAllRecord()">確定</button>
-      <button
+      <Button @click="deleteAllRecord()">確定</Button>
+      <Button
         @click="confirmDeleteAllPopupControl = !confirmDeleteAllPopupControl"
       >
         取消
-      </button>
+      </Button>
     </Popup>
   </div>
 </template>
@@ -48,6 +43,7 @@
 <script setup>
 import { ref, watch, onMounted } from "vue";
 import Popup from "../common/Popup.vue";
+import Button from "../common/Button.vue";
 
 const tunnelRecordArray = ref(getTunnelRecord());
 const tunnelFeeTotal = ref(0);

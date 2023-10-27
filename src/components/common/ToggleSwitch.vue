@@ -6,8 +6,6 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
-
 defineEmits(["toggleSwitch"]);
 const props = defineProps({
   status: {

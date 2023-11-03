@@ -73,11 +73,21 @@ function error(err) {
   errorContent.value = err.message;
 }
 
+function playSound() {
+  const audio = new Audio('./music/added.mp3');
+  audio.play();
+}
+
 function popupMessage(tunnel) {
   currentClickedTunnel.value = tunnel;
   addRecordPopupStatus.value = true;
+
+  if (settingStore.setting.playSoundWhenAddToRecord) {
+    playSound();
+  }
+
   setTimeout(() => {
     addRecordPopupStatus.value = false;
-  }, 500);
+  }, 1000);
 }
 </script>

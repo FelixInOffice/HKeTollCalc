@@ -10,5 +10,10 @@ export default {
       key: "showGPSStatus",
       default: true,
     },
+    {
+      name: "新增至紀錄時播放音效",
+      key: "playSoundWhenAddToRecord",
+      default: true,
+    }
   ],
 };

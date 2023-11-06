@@ -1,6 +1,6 @@
 <template>
   <div class="home__wrapper" :class="{ freeze: !permissionStatus || addRecordPopupStatus }">
-    <TunnelCard :tunnels="tunnel" :currentLocation="currentLocation" @add-record="popupMessage($event)" />
+    <TunnelCard :tunnels="tunnel" :currentLocation="currentLocation" @add-record="addRecordPopupMessage($event)" />
   
     <div v-if="settingStore.setting.showGPSStatus" class="home__wrapper--permissionStatus" :class="[ permissionStatus ? 'status-dot-green' : 'status-dot-red' ]">
     </div>
@@ -78,7 +78,7 @@ function playSound() {
   audio.play();
 }
 
-function popupMessage(tunnel) {
+function addRecordPopupMessage(tunnel) {
   currentClickedTunnel.value = tunnel;
   addRecordPopupStatus.value = true;
 
